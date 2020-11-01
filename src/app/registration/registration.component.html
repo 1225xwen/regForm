@@ -1,0 +1,71 @@
+<html>
+<h2 style="text-align:center;
+            margin-top:50px;
+            margin-left:350px;
+            width: 50%;
+            border: 3px solid rgb(7, 6, 6);
+            padding: 15px;">Please Register here</h2>
+
+<form #regform="ngForm" (ngSubmit)="onSubmit()" name="registrationForm">
+<div  class="container">
+
+     <div class="form-group">
+        <label for="fullname"><b>Full Name </b>  </label>
+        <input type="text" class="form-control"  name="fullname" 
+          required [(ngModel)]="FullName" #fullname="ngModel"
+          >
+          <div  style="color: red" *ngIf="fullname.invalid">
+            <small class="text-danger">Please provide your full name</small>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email"><b>Email</b> </label>
+        <input type="text" class="form-control" name="email" 
+          required [(ngModel)]="Email" #email="ngModel"  pattern="^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$"
+          >
+          <div  style="color: red" *ngIf="!email.valid">
+            <small class="text-danger">Please provide a valid email address</small>
+          </div>
+      </div>
+
+      <div>
+        <label for="phonenumber"><b>Phone Number</b>  </label>
+        <input type="tel" class="form-control" name="phonenumber" 
+          required [(ngModel)]="PhoneNumber" #phonenumber="ngModel"  pattern="^((\\+91-?)|0)?[0-9]{11}$"
+          >
+          <div  style="color: red" *ngIf="!phonenumber.valid">
+            <small class="text-danger">Please provide a 11-digit phone number</small>
+          </div>
+      </div>
+     
+
+      <div>
+        <label for="address"><b>Address</b> </label>
+        <input type="text" class="form-control"  name="address" 
+          required [(ngModel)]="Address" #address="ngModel"  
+          >
+          <div  style="color: red" *ngIf="!address.valid">
+            <small class="text-danger">Please provide a valid address</small>
+          </div>
+      </div>
+
+      <div>
+        <label for="address"><b>Password</b> </label>
+        <input type="password" class="form-control" name="password" 
+          required [(ngModel)]="Password" #password="ngModel"  minlength="8"
+          >
+          <div  style="color: red" *ngIf="!password.valid">
+            <small class="text-danger">Please provide a valid password,at least 8 characters required</small>
+          </div>
+        </div>
+
+        <br>
+    
+    
+    <button type="submit" [disabled]="!regform.valid"  class="btn btn-success" >Submit</button>
+  
+   
+</div>
+</form>
+</html>

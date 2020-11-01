@@ -1,18 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RegistrationComponent } from './registration/registration.component';
+import {NotfoundComponent} from './notfound/notfound.component';
+import { registerLocaleData } from '@angular/common';
+import {Routes, RouterModule} from '@angular/router';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { DatabaseService } from './database.service';
 
+
+const Routes:Routes=[
+  {path:"",component:RegistrationComponent},
+  {path:"welcome",component:WelcomeComponent},
+  {path:"**",component:NotfoundComponent},
+];
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegistrationComponent,
+    WelcomeComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(Routes,{useHash:true}),
   ],
-  providers: [],
+  providers: [DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
