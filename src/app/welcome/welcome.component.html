@@ -1,8 +1,24 @@
 
 <body style=background-color:powderblue>
-<h2 style="text-align:center;
-margin-top:50px;
-margin-left:350px;
-width: 50%;" >Welcome, {{newUser.FullName}} </h2>
+
+<div *ngIf="newUser">
+    <h2 style="text-align:center;
+    margin-top:50px;
+    margin-left:350px;
+    width: 50%;
+    text-align: center;" >Welcome, {{newUser.FullName}} </h2>
+</div>
+
+<div *ngIf="!newUser">
+    <h2 style="text-align:center;
+    margin-top:50px;
+    margin-left:280px;
+    width: 50%;" >Hi,Please register first </h2>
+    <br>
+    <button (click)="GoToRegister()" class="btn btn-success" style="margin-left:500px;">Register Here</button>
+</div>
+
 </body>
+
+
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../database.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-welcome',
@@ -8,7 +10,7 @@ import { DatabaseService } from '../database.service';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor(private db:DatabaseService) {
+  constructor(private db:DatabaseService,private router: Router) {
 
    }
 
@@ -16,6 +18,11 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.newUser=this.db.CurrentUser;
+    console.log(this.newUser);
+  }
+
+  GoToRegister(){
+    this.router.navigate(["/"]);
   }
 
   
